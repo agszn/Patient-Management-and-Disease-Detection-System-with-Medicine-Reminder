@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+
+{% block style %}
+    <!-- Add Materialize CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+
+        <!-- Optional: Add custom styles -->
+        <style>
+            /* Your custom styles here */
+            .container {
+                margin-top: 20px;
+            }
+            .collection-item {
+                padding: 10px;
+                border-bottom: 1px solid #e0e0e0;
+            }
+        </style>
+{% endblock %}
+
+
+{% block index %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Prescription List</h1>
+        <ul class="collection">
+            {% for prescription in prescriptions %}
+                <li class="collection-item">
+                    <span>{{ prescription.medicine_name }} - {{ prescription.patient.patient_name }}</span>
+                    <a href="{% url 'update_prescription' prescription.pk %}" class="secondary-content"><i class="material-icons">edit</i></a>
+                    <form action="{% url 'delete_prescription' prescription.pk %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn waves-effect waves-light red"><i class="material-icons">delete</i></button>
+                    </form>
+                </li>
+            {% empty %}
+                <li class="collection-item">No prescriptions available.</li>
+            {% endfor %}
+        </ul>
+    </div>
+    <!-- Step 3: Include Materialize JavaScript for certain components -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+
+{% block style %}
+    <!-- Add Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Optional: Add custom styles -->
+{% endblock %}
+
+
+{% block index %}
+{% endblock %}
+
+{% block content %}
+    <h1>Create Medicine Consumed</h1>
+    <div class="container">
+        <form method="post">
+            {% csrf_token %}
+            <!-- Update form elements to use Materialize CSS -->
+            <div class="input-field">
+                {{ form.field_name }}
+                <label for="field_name">Field Name</label>
+            </div>
+            <!-- Repeat the above pattern for each form field -->
+            <button class="btn waves-effect waves-light" type="submit" name="action">Save
+                <i class="material-icons right">send</i> <!-- Optional: Add an icon -->
+            </button>
+        </form>
+    </div>
+    <!-- Step 3: Include Materialize JavaScript for certain components -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+{% endblock %}

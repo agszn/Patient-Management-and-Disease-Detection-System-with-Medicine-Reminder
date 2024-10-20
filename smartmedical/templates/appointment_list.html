@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+
+{% block style %}
+    <!-- Add Materialize CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+
+        <!-- Optional: Add custom styles -->
+        <style>
+            /* Your custom styles here */
+            .appointment-item {
+                margin-bottom: 10px;
+            }
+        </style>
+{% endblock %}
+
+
+{% block index %}
+{% endblock %}
+
+{% block content %}
+
+</head>
+<body>
+    <div class="container">
+        <h1>Appointment List</h1>
+        <ul class="collection">
+            {% for appointment in appointments %}
+                <li class="collection-item appointment-item">
+                    {{ appointment.appointment_title }} - {{ appointment.appointment_description }}
+                    <a href="{% url 'update_appointment' appointment.pk %}" class="secondary-content">Update</a>
+                    <form action="{% url 'delete_appointment' appointment.pk %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-small red">Delete</button>
+                    </form>
+                </li>
+            {% empty %}
+                <li class="collection-item">No appointments available.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Add Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    {% endblock %}

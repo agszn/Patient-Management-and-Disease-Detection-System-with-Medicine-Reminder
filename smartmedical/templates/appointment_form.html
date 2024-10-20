@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+
+{% block style %}
+    <!-- Add Materialize CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+
+    <!-- Optional: Add custom styles -->
+{% endblock %}
+
+
+{% block index %}
+{% endblock %}
+
+{% block content %}
+<center>
+  <div class="container">
+    <h1 class="center-align">Create Appointment</h1>
+    <form method="post" class="center-align">
+        {% csrf_token %}
+        <div class="input-field">
+            {{ form.as_p }}
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" style="margin-top: 20px;">Save</button>
+    </form>
+</div>
+
+</center>
+<!-- Add Materialize JavaScript -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+{% endblock %}

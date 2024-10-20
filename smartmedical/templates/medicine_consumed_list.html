@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+
+{% block style %}
+    <!-- Add Materialize CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+        <!-- Optional: Add custom styles -->
+        <style>
+            /* Your custom styles here */
+            .container {
+                margin-top: 20px;
+            }
+            .collection-item {
+                padding: 10px;
+                border-bottom: 1px solid #e0e0e0;
+            }
+        </style>
+{% endblock %}
+
+
+{% block index %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Medicine Consumed List</h1>
+        
+    </div>
+
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+{% endblock %}

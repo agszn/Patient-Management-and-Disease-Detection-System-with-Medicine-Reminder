@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+
+{% block style %}
+
+{% endblock %}
+
+
+{% block index %}
+{% endblock %}
+
+{% block content %}
+   <center><h1>Create Exercise</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Save</button>
+    </form></center> 
+{% endblock %}

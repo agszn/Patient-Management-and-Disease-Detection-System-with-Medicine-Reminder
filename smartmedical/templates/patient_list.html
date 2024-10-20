@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+
+{% block style %}
+    <!-- Add Materialize CSS -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> -->
+
+        <!-- Optional: Add custom styles -->
+        <style>
+            /* Your custom styles here */
+            .container {
+                margin-top: 20px;
+            }
+            .collection-item {
+                padding: 10px;
+                border-bottom: 1px solid #e0e0e0;
+            }
+        </style>
+{% endblock %}
+
+
+{% block index %}
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1>Patient List</h1>
+        <ul class="collection">
+            {% for patient in patients %}
+                <li class="collection-item">
+                    {{ patient.patient_name }} - {{ patient.assosiated_doctor }}
+                    <a href="{% url 'update_patient' patient.pk %}" class="secondary-content">Update</a>
+                    <form action="{% url 'delete_patient' patient.pk %}" method="post" style="display: inline;">
+                        {% csrf_token %}
+                        <button type="submit" class="btn-small red">Delete</button>
+                    </form>
+                </li>
+            {% empty %}
+                <li class="collection-item">No patients available.</li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Materialize JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+{% endblock %}
