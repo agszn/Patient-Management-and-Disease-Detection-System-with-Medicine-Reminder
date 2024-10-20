@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+{% block title %}Dashboard{% endblock %}
+{% block style %}
+{% endblock %}
+
+{% block index %}
+{% endblock %}
+
+{% block content %}
+<div style="text-align: center;">
+    Hello, {{ request.user.username }}
+    <p>Welcome to your Page</p>
+</div>
+{% if request.user.is_authenticated %}
+    {% if user.is_superuser %}
+
+    <section class="features">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div id="text-container">
+              <h1 style="animation: fadeInUp 1s ease-out;text-shadow: 3px 3px 3px rgba(52, 49, 51, 0.8);color: #938787;font-size: 50px;">Doctor  </h1>
+          </div>
+            <div class="feature-block d-lg-flex">
+              
+              <div class="feature-item mb-5 mb-lg-0">
+                <div class="feature-icon mb-4">
+                  <i class="icofont-surgeon-alt"></i>
+                </div>
+                <span>24 Hours Service</span>
+                <h4 class="mb-3">Online Appoinment</h4>
+                <p class="mb-4">Get ALl time support for emergency.We have introduced the principle of family medicine.</p>
+                <p class="mb-4">Total Doctor Count: {{non_admin_count}}</p>
+                <p class="mb-4">Total Patient Count: {{admin_count}}</p>
+              </div>
+            
+              <div class="feature-item mb-5 mb-lg-0">
+                <div class="feature-icon mb-4">
+                  <i class="icofont-ui-clock"></i>
+                </div>
+                <span>Timing schedule</span>
+                <h4 class="mb-3">Working Hours</h4>
+                <ul class="w-hours list-unstyled">
+                            <li class="d-flex justify-content-between">Sun - Wed : <span>8:00 - 17:00</span></li>
+                            <li class="d-flex justify-content-between">Thu - Fri : <span>9:00 - 17:00</span></li>
+                            <li class="d-flex justify-content-between">Sat - sun : <span>10:00 - 17:00</span></li>
+                        </ul>
+              </div>
+            
+              <div class="feature-item mb-5 mb-lg-0">
+                <div class="feature-icon mb-4">
+                  <i class="icofont-support"></i>
+                </div>
+                <span>Emegency Number</span>
+                <h4 class="mb-3">0831-852140</h4>
+                <p>Get ALl time support for emergency.We have introduced the principle of family medicine.Get Conneted with us for any urgency .</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    {% else %}
+    <section class="features">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <div id="text-container">
+              <h1 style="animation: fadeInUp 1s ease-out;text-shadow: 3px 3px 3px rgba(52, 49, 51, 0.8);color: #938787;font-size: 50px;">Patient  </h1>
+          </div>
+            <div class="feature-block d-lg-flex">
+              
+              <div class="feature-item mb-5 mb-lg-0">
+                <div class="feature-icon mb-4">
+                  <i class="icofont-surgeon-alt"></i>
+                </div>
+                <span>24 Hours Service</span>
+                <h4 class="mb-3">Online Appoinment</h4>
+                <p class="mb-4">Get ALl time support for emergency.We have introduced the principle of family medicine.</p>
+                <p class="mb-4">Total Doctor Count: {{non_admin_count}}</p>
+                <p class="mb-4">Total Patient Count: {{admin_count}}</p>
+              </div>
+            
+              <div class="feature-item mb-5 mb-lg-0">
+                <div class="feature-icon mb-4">
+                  <i class="icofont-ui-clock"></i>
+                </div>
+                <span>Timing schedule</span>
+                <h4 class="mb-3">Working Hours</h4>
+                <ul class="w-hours list-unstyled">
+                            <li class="d-flex justify-content-between">Sun - Wed : <span>8:00 - 17:00</span></li>
+                            <li class="d-flex justify-content-between">Thu - Fri : <span>9:00 - 17:00</span></li>
+                            <li class="d-flex justify-content-between">Sat - sun : <span>10:00 - 17:00</span></li>
+                        </ul>
+              </div>
+            
+              <div class="feature-item mb-5 mb-lg-0">
+                <div class="feature-icon mb-4">
+                  <i class="icofont-support"></i>
+                </div>
+                <span>Emegency Number</span>
+                <h4 class="mb-3">0831-852140</h4>
+                <p>Get ALl time support for emergency.We have introduced the principle of family medicine.Get Conneted with us for any urgency .</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    {% endif %}
+
+{% endif %}
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}
+
+{% block script %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+      function generateRandomData() {
+        return Math.floor(Math.random() * 5) + 1;
+      }
+
+      var data = {
+        labels: ['Week1', 'Week2', 'Week3', 'Week4', 'Week5'],
+        datasets: [{
+          label: 'Average value of number of medicines consumed ',
+          backgroundColor: 'black', // Background color
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1,
+          data: Array.from({ length: 7 }, generateRandomData) // Generate random data for 7 days
+        }]
+      };
+    
+      // Configuration options
+      var options = {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+        plugins: {
+          legend: {
+            labels: {
+              color: 'black' // Text color for legend
+            }
+          },
+          title: {
+            display: true,
+            text: 'Medicine Consumption',
+            color: 'black' // Text color for title
+          },
+          tooltip: {
+            bodyColor: 'white' // Text color for tooltip
+          }
+        }
+      };
+    
+      // Get the canvas element
+      var ctx = document.getElementById('myChart').getContext('2d');
+    
+      // Create the chart
+      var myChart = new Chart(ctx, {
+        type: 'line',
+        data: data,
+        options: options
+      });
+    });
+  </script>
+{% endblock %}

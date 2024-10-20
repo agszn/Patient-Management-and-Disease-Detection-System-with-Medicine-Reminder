@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block style %}
+<style>
+    /* Add your CSS styles here */
+    .about {
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        max-width: 800px;
+    }
+
+    .about h1 {
+        text-align: center;
+    }
+
+    .about p {
+        font-weight: bold;
+    }
+
+    .about-info {
+        display: flex;
+        align-items: center;
+    }
+
+    .about-img img {
+        max-width: 200px;
+        border-radius: 5px;
+        margin-right: 20px;
+    }
+
+    .about-text {
+        flex: 1;
+    }
+
+    .btn {
+        margin-left: 20%;
+    }
+</style>
+{% endblock %}
+
+{% block index %}
+{% endblock %}
+
+{% block content %}
+<section class="about">
+    <h1>About</h1>
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur voluptatibus ullam, distinctio veniam accusamus quam maiores suscipit nam vero, eligendi laudantium eos delectus saepe perferendis quisquam cupiditate doloribus. Explicabo, numquam.
+    </p>
+    <hr>
+    <div class="about-info">
+        <div class="about-img">
+            <img src="https://www.southernliving.com/thmb/CzuBalMhp_jRAeZ0ytI6NB6znJw=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/Hourglass-MirageC-Getty-Images-2000-36c7e2433db941eb9908a9fde84fdbd9.jpg" alt="GeeksforGeeks">
+        </div>
+        <div class="about-text">
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur voluptatibus ullam, distinctio veniam accusamus quam maiores suscipit nam vero, eligendi laudantium eos delectus saepe perferendis quisquam cupiditate doloribus. Explicabo, numquam.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- <button class="btn" style="margin-left: 29%;">hi@finalyearproject.com</button>
+<button class="btn">enquire@project2024.in</button> -->
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

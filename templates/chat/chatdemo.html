@@ -1,0 +1,186 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% load static %}
+{% block style %}
+<style>
+    /* Chat container */
+    .chat-container {
+        width: 100%;
+        max-width: 400px;
+        margin: 0 auto;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: 60vh; /* Adjust the height as needed */
+    }
+
+    /* Chat header */
+    .chat-header {
+        background-color: #007bff;
+        color: #fff;
+        padding: 10px;
+        text-align: center;
+        border-bottom: 1px solid #ccc;
+    }
+
+    /* Chat box */
+    .chat-box {
+        flex: 1;
+        overflow-y: auto;
+        padding: 10px;
+    }
+
+    /* Chat message */
+    .chat-message {
+        margin-bottom: 10px;
+        padding: 8px 12px;
+        border-radius: 10px;
+        max-width: 70%;
+    }
+
+    /* Bot message */
+    .bot-message {
+        background-color: #f0f0f0;
+        color: #333;
+        align-self: flex-start;
+
+    }
+
+    /* User message */
+    .user-message {
+        background-color: #007bff;
+        color: #fff;
+        align-self: flex-end;
+        margin-left: 38%;
+    }
+
+    /* Chat input */
+    .chat-input {
+        padding: 10px;
+        display: flex;
+        align-items: center;
+        border-top: 1px solid #ccc;
+    }
+
+    /* Input box */
+    #userInput {
+        flex: 1;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    /* Send button */
+    .chat-input button {
+        padding: 8px 12px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        margin-left: 5px;
+        cursor: pointer;
+    }
+
+    .chat-input button:hover {
+        background-color: #0056b3;
+    }
+</style>
+{% endblock %}
+
+{% block index %}
+{% endblock %}
+
+{% block content %}
+<img src="{% static 'collegeChat/img/image1.png' %}" style="width:100%;margin-top: 0%;height: 10%;" >
+
+
+    <div class="chat-container" style="margin-top: 3%;">
+        <div class="chat-header">
+            Queries
+        </div>
+        <div class="chat-box" id="chatBox">
+            <div class="chat-message bot-message">
+                Hi! How can I help you today?
+            </div>
+        </div>
+        <div class="chat-input">
+            <input type="text" id="userInput" placeholder="Type your message...">
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <script>
+        function sendMessage() {
+            var userInput = document.getElementById('userInput').value;
+            if (userInput.trim() === '') return;
+
+            appendMessage(userInput, 'user-message');
+
+            // Simulate a response from the bot (replace with actual chatbot logic)
+            var botResponse = getBotResponse(userInput);
+            appendMessage(botResponse, 'bot-message');
+
+            // Clear the input field
+            document.getElementById('userInput').value = '';
+        }
+
+        function appendMessage(message, className) {
+            var chatBox = document.getElementById('chatBox');
+            var messageDiv = document.createElement('div');
+            // messageDiv.textContent = message;
+            messageDiv.innerHTML = message;
+            
+            // Set alignment based on the message type
+            if (className === 'user-message') {
+                messageDiv.classList.add('chat-message', 'user-message');
+            } else {
+                messageDiv.classList.add('chat-message', 'bot-message');
+            }
+            
+            chatBox.appendChild(messageDiv);
+
+            // Scroll to the bottom of the chat box
+            chatBox.scrollTop = chatBox.scrollHeight;
+        }
+
+        function getBotResponse(userInput) {
+            // Questions related to college programs, admissions, and campus life
+            if (userInput.toLowerCase().includes('programs') || userInput.toLowerCase().includes('degrees')) {
+                            return 'The college offers a range of programs including <ul class="dropdown">' +
+                '<li id="menu-item-1701" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1701"><a href="https://robotics.aitmbgm.ac.in">Robotics &amp; Automation Engineering</a></li>' +
+                '<li id="menu-item-75" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-75"><a href="https://ai.aitmbgm.ac.in">Artificial Intelligence &amp; Data Science</a></li>' +
+                '<li id="menu-item-76" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-76"><a href="https://civil.aitmbgm.ac.in">Civil Engineering</a></li>' +
+                '<li id="menu-item-77" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-77"><a href="https://cse.aitmbgm.ac.in">Computer Science &amp; Engineering</a></li>' +
+                '<li id="menu-item-78" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-78"><a href="https://ece.aitmbgm.ac.in">Electronics &amp; Communication Engineering</a></li>' +
+                '<li id="menu-item-79" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-79"><a href="https://eee.aitmbgm.ac.in">Electrical &amp; Electronics Engineering</a></li>' +
+                '<li id="menu-item-80" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-80"><a href="https://mech.aitmbgm.ac.in">Mechanical Engineering</a></li>' +
+                '</ul>. For more details, you can visit the  <a href="https://aitmbgm.ac.in/">college website</a> or <a href="{% url 'contact' %}">contact</a> the admissions office.';
+            } else if (userInput.toLowerCase().includes('apply') || userInput.toLowerCase().includes('admission')) {
+                return 'To apply to the college, you can [describe the application process]. Application deadlines and requirements may vary, so it\'s best to check the college website for specific details.';
+            } else if (userInput.toLowerCase().includes('admission requirements') || userInput.toLowerCase().includes('deadlines')) {
+                return 'Admission requirements and deadlines depend on the program you\'re applying to. You can find detailed information on the college website or by contacting the admissions office directly.';
+            } else if (userInput.toLowerCase().includes('campus tour') || userInput.toLowerCase().includes('visit')) {
+                return 'Yes, you can schedule a campus tour or visit by contacting the admissions office. They\'ll provide you with available dates and times.';
+            } else if (userInput.toLowerCase().includes('tuition') || userInput.toLowerCase().includes('fees')) {
+                return 'The cost of tuition and fees varies depending on the program and whether you\'re an in-state or out-of-state student. For specific details, you can check the college website or contact the financial aid office.';
+            } else if (userInput.toLowerCase().includes('scholarships') || userInput.toLowerCase().includes('financial aid')) {
+                return 'The college offers various scholarships and financial aid options to eligible students. You can find more information on the college website or by contacting the financial aid office.';
+            } else if (userInput.toLowerCase().includes('resources') || userInput.toLowerCase().includes('student organizations')) {
+                return 'The college provides a range of resources to students, including libraries, career services, and student organizations. You can explore these options once you enroll.';
+            }
+            else if (userInput.toLowerCase().includes('aitm') || userInput.toLowerCase().includes('suresh angadi education foundation')  || userInput.toLowerCase().includes('saef')) {
+                return 'Angadi Institute of Technology and Management (AITM) <img src="https://abped-college-dashboard.s3.us-east-2.amazonaws.com/tted/college-backend/college/39947141-fd74-41a9-815d-b0cdc20dc22b.jpg" alt="college" style="width:100%"> was established in 2009,Under the wing of the Suresh Angadi Education Foundation (SAEF). Suresh Angadi was its Founder Chairman. <a href="https://www.google.com/maps/dir//aitm/data=!4m6!4m5!1m1!4e2!1m2!1m1!1s0x3bbf653f86391c41:0x6f90eeb682e03767?sa=X&ved=1t:3061&ictx=111">Location</a> - <span aria-label="Call phone number 070220 49135">070220 49135</span> ';
+            } // Add more conditions for other questions
+
+            else if (userInput.toLowerCase().includes('Hi') || userInput.toLowerCase().includes('Hello') || userInput.toLowerCase().includes('Hey') || userInput.toLowerCase().includes('whatsup') || userInput.toLowerCase().includes('yo')){
+                return 'Hello Welcome to AITM Chat Service';
+            }
+            // If the question doesn't match any predefined categories
+            return 'I\'m sorry, I don\'t have information on that specific question at the moment. You might want to check the college website or contact the relevant department for assistance.';
+        }
+
+
+    </script>
+{% endblock %}
+
