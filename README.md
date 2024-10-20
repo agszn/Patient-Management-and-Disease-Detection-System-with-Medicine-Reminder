@@ -3,53 +3,53 @@
 This file contains descriptions of the images in the `assets` folder.
 
 ### About
-![About](assets\about.png)
+![About](assets/about.png)
 
 ### Appointmentlist
-![Appointmentlist](assets\AppointmentList.png)
+![Appointmentlist](assets/AppointmentList.png)
 
 ### Contact
-![Contact](assets\Contact.png)
+![Contact](assets/Contact.png)
 
 ### Createappintment
-![Createappintment](assets\CreateAppintment.png)
+![Createappintment](assets/CreateAppintment.png)
 
 ### Createpatient
-![Createpatient](assets\CreatePatient.png)
+![Createpatient](assets/CreatePatient.png)
 
 ### Createprescription
-![Createprescription](assets\createPrescription.png)
+![Createprescription](assets/createPrescription.png)
 
 ### Doctornotification
-![Doctornotification](assets\DoctorNotification.png)
+![Doctornotification](assets/DoctorNotification.png)
 
 ### Doctorpage
-![Doctorpage](assets\DoctorPage.png)
+![Doctorpage](assets/DoctorPage.png)
 
 ### Login
-![Login](assets\login.png)
+![Login](assets/login.png)
 
 ### Medicine Consumed
-![Medicine Consumed](assets\Medicine Consumed.png)
+![Medicine Consumed](assets/Medicine Consumed.png)
 
 ### Notifications
-![Notifications](assets\notifications.png)
+![Notifications](assets/notifications.png)
 
 ### Patientlist
-![Patientlist](assets\PatientList.png)
+![Patientlist](assets/PatientList.png)
 
 ### Patientpage
-![Patientpage](assets\patientPage.png)
+![Patientpage](assets/patientPage.png)
 
 ### Prescriptionlist
-![Prescriptionlist](assets\prescriptionList.png)
+![Prescriptionlist](assets/prescriptionList.png)
 
 ### Prescriptionlistdoctor
-![Prescriptionlistdoctor](assets\PrescriptionListDoctor.png)
+![Prescriptionlistdoctor](assets/PrescriptionListDoctor.png)
 
 ### Profile
-![Profile](assets\Profile.png)
+![Profile](assets/Profile.png)
 
 ### Register
-![Register](assets\Register.png)
+![Register](assets/Register.png)
 
